@@ -34,3 +34,6 @@ Train a linear model for predicting temperature by reading a weather patterns da
 
 Train a model to predict a class/category using machine learning techniques such as Clustering, ANOVA & Chi-Squared feature selection, dimensionality reduction
 
+### working_location_script
+
+A script which reconciles latitude / longitude coordinates to locations which are entered as free-text. For example: "Melbourne", "Melbourne 3212", Melbourne VIC" should all result in the same latitude / longitude coordinates. This is useful for plotting free-text geographic information on a map visual.
