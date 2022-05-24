@@ -1,0 +1,59 @@
+---
+title: "EDR Interview"
+author: "Glenn Free"
+---
+
+'Setup Chunk'
+
+```{r}
+library(DBI)
+library(reticulate)
+library (readr)
+
+git_url="https://raw.githubusercontent.com/DarthVidarr/Repos/main/SampleDataset.csv"
+
+SampleDataset <-read_csv(url(git_url))
+
+con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+dbWriteTable(con, "SampleDataset", SampleDataset)
+```
+
+'SQL Chunk'
+
+1 How many rows are in the dataset?
+2 How many unique Species types are there?
+3 What is the average value of Sepal.Length for Species 'setosa'
+4 With the exception of 'Species', remove all rows with non-numeric values.
+5 How many rows are in the dataset after removing non-numeric values?
+6 Are there the same number of rows or less? Why?
+
+```{sql, connection=con, output.var="sql_df"}
+
+
+```
+
+'R Chunk'
+
+1 How many rows are in the dataset?
+2 How many unique Species types are there?
+3 What is the average value of Sepal.Length for Species 'setosa'
+4 With the exception of 'Species', remove all rows with non-numeric values.
+5 How many rows are in the dataset after removing non-numeric values?
+6 Are there the same number of rows or less? Why?
+
+```{r}
+```
+
+'Python Chunk'
+
+1 How many rows are in the dataset?
+2 How many unique Species types are there?
+3 What is the average value of Sepal.Length for Species 'setosa'
+4 With the exception of 'Species', remove all rows with non-numeric values.
+5 How many rows are in the dataset after removing non-numeric values?
+6 Are there the same number of rows or less? Why?
+
+```{python}
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
