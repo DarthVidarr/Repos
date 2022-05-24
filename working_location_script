@@ -1,0 +1,58 @@
+import pandas as pd
+import numpy as np
+import os
+from geopy.geocoders import Photon # Photon is used instead of Nominatim is Nominatim started throwing 403 HTTP errors
+from geopy.extra.rate_limiter import RateLimiter
+
+os.chdir('C:/Users/Free family/Desktop/Glenn work and uni/work/MBS contract work/Quote_14/')
+
+file = 'Enrolment_Data.xlsx'
+sheet = 'Enrolment_Data'
+base_df  = pd.read_excel(file, sheet_name = sheet)
+
+base_df.loc[ base_df['working_region'] == 'ACT/Southern NSW', 'working_region'] = 'NSW, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'Sydney', 'working_region'] = 'NSW, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'VIC', 'working_region'] = 'VIC, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'WA', 'working_region'] = 'WA, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'SA', 'working_region'] = 'SA, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'SQLD', 'working_region'] = 'QLD, AUSTRALIA'    
+base_df.loc[ base_df['working_region'] == 'Central/Northern NSW', 'working_region'] = 'NSW, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'NQLD', 'working_region'] = 'QLD, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'RIVERNA', 'working_region'] = 'RIVERINA, NSW, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'NT/K', 'working_region'] = 'NT, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'International', 'working_region'] = 'International'
+base_df.loc[ base_df['working_region'] == 'TAS', 'working_region'] = 'TAS, AUSTRALIA'
+base_df.loc[ base_df['working_region'] == 'Other', 'working_region'] = 'OTHER'
+
+base_df['working_region'] = base_df['working_region'].fillna('')
+base_df['working_location'] = base_df['working_location'].fillna('')
+base_df['working_region'] = base_df['working_region'].astype(str)
+base_df['working_location'] = base_df['working_location'].astype(str)
+
+base_df['joined'] = base_df[['working_location', 'working_region']].agg(', '.join, axis=1)
+
+df = pd.DataFrame(base_df['joined'].unique(), columns=['joined'])
+
+manual_file = 'Manually_corrected_locations.xlsx'
+manual_sheet = 'Manually_corrected_locations'
+manual_corrections  = pd.read_excel(manual_file, sheet_name = manual_sheet)
+
+merged = df.merge(manual_corrections, on='joined', how='left')
+
+print(len(merged))
+
+locator = Photon(user_agent='myGeocoder')
+
+# 1 - function to delay between geocoding calls
+
+geocode = RateLimiter(locator.geocode, min_delay_seconds=1)
+
+# 2- - create location column
+merged['location2'] = merged['corrected_location'].apply(geocode)
+
+# 3 - create longitude, latitude and altitude from location column (returns tuple)
+merged['point'] = merged['location2'].apply(lambda loc: tuple(loc.point) if loc else None)
+
+# 4 - save file with coordinates down
+
+merged.to_csv('Enrolment_Data_w_coordinates_manual.csv')
