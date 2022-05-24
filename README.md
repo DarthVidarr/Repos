@@ -5,7 +5,8 @@ A collection of code, documentation, and sample outputs for various data science
 # Contents
 
 ### GUID performance by data type (Power BI)
-A publicly available Power BI report which investigates the difference in processing performance between data types 
+A [publicly available Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
+ which investigates the difference in processing performance between data types 
 
 ### GUID_performance_script (R)
 The script behind the GUID perfomance Power BI report which is used to run the performance test
