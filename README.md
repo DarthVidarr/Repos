@@ -38,3 +38,11 @@ Used as an input for 'EDR_Senior_Analyst.Rmd'
 ### working_location_script
 
 A script which reconciles latitude / longitude coordinates to locations which are entered as free-text. For example: "Melbourne", "Melbourne 3212", Melbourne VIC" should all result in the same latitude / longitude coordinates. This is useful for plotting free-text geographic information on a map visual.
+
+### Documentation > Documentation sample
+
+An example of documentation including data transformations, modelling, lineage and brief wireframe.
+
+### Documentation > Wireframe sample
+
+A wireframe for a proof-of-concept Power BI report
