@@ -1,7 +1,14 @@
-# Repository description
-
-A collection of code, documentation, and sample outputs for various data science, wrangling, and analysis projects.
 <p align="center">
+# Introduction
+
+This repository contains collection of various code, documentation, and sample outputs which have been produced for various data science, wrangling, and analysis projects. 
+
+# Purpose
+
+The purpose of this repository is to keep versions of code for future development use and to continue contributing to when new or improvements to existing code is produced 
+
+# Example of contents
+
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
 </p>
 # Contents
