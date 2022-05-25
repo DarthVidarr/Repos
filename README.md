@@ -1,4 +1,3 @@
-<p align="center">
 # Introduction
 
 This repository contains collection of various code, documentation, and sample outputs which have been produced for various data science, wrangling, and analysis projects. 
@@ -9,6 +8,7 @@ The purpose of this repository is to keep versions of code for future developmen
 
 # Example of contents
 
+<p align="center">
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
 </p>
 # Contents
