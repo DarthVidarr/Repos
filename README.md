@@ -2,6 +2,8 @@
 
 A collection of code, documentation, and sample outputs for various data science, wrangling, and analysis projects.
 
+![heatmap](/heatmap.jpg)
+
 # Contents
 
 ### GUID performance by data type (Power BI)
