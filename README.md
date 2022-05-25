@@ -12,6 +12,10 @@ The purpose of this repository is to keep versions of code for future developmen
 
 _Power BI heatmap to track clients user data_
 
+<img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG">
+
+_Visualising the linear regression of significant features used to predict temperature_
+
 # Contents
 
 ### GUID performance by data type (Power BI)
