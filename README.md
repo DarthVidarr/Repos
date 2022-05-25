@@ -2,7 +2,7 @@
 
 A collection of code, documentation, and sample outputs for various data science, wrangling, and analysis projects.
 
-![heatmap](/heatmap.jpg)
+![heatmap](https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG)
 
 # Contents
 
