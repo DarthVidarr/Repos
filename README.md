@@ -11,7 +11,7 @@ The purpose of this repository is to keep versions of code for future developmen
 <p align="center">
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
 </p>
-
+<p style="text-align: center;">heatmap produced in Power BI to track user data</p>
 # Contents
 
 ### GUID performance by data type (Power BI)
