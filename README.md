@@ -1,8 +1,9 @@
 # Repository description
 
 A collection of code, documentation, and sample outputs for various data science, wrangling, and analysis projects.
-
+<p align="center">
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
+</p>
 # Contents
 
 ### GUID performance by data type (Power BI)
