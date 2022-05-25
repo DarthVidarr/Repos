@@ -2,8 +2,7 @@
 
 A collection of code, documentation, and sample outputs for various data science, wrangling, and analysis projects.
 
-![heatmap](https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG =250x250)
-
+<img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="100" height="100">
 # Contents
 
 ### GUID performance by data type (Power BI)
