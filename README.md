@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains collection of various code, documentation, and sample outputs which have been produced for various data science, wrangling, and analysis projects. 
+This repository contains collection of code, documentation, and sample outputs which have been produced for various data science, wrangling, and analysis projects. 
 
 # Purpose
 
