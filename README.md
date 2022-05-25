@@ -10,8 +10,11 @@ The purpose of this repository is to keep versions of code for future developmen
 
 <p align="center">
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
+</p>
 
+<p align="center">
 # Contents
+</p>
 
 ### GUID performance by data type (Power BI)
 A [publicly available Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
@@ -55,4 +58,4 @@ An example of documentation including data transformations, modelling, lineage a
 ### Documentation > Wireframe sample
 
 A wireframe for a proof-of-concept Power BI report
-</p>
+
