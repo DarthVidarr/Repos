@@ -16,6 +16,10 @@ _Visualising the linear regression of significant features used to predict tempe
 
 <img src="https://github.com/DarthVidarr/Repos/blob/main/linear_regression.JPG">
 
+_Output of Autoregressive Integrated Moving Average (ARIMA) model to predict a count of future university professor citations_
+
+<img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG">
+
 # Contents
 
 ### GUID performance by data type (Power BI)
