@@ -18,7 +18,7 @@ _Visualising the linear regression of significant features used to predict tempe
 
 _Output of Autoregressive Integrated Moving Average (ARIMA) model to predict a count of future university professor citations_
 
-<img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG">
+<img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG" width="450" height="350">
 
 # Contents
 
