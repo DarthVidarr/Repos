@@ -8,15 +8,15 @@ The purpose of this repository is to keep versions of code for future developmen
 
 # Example of contents
 
-_Power BI visualisations
+_Power BI visualisations_
 
 !<img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">  !<img src="https://github.com/DarthVidarr/Repos/blob/main/Performance_Test_image.JPG" width="450" height="350">
 
-_Visualising the linear regression of significant features used to predict temperature_
+_Python analysis and visualisation_
 
 <img src="https://github.com/DarthVidarr/Repos/blob/main/linear_regression.JPG">
 
-_Output of Autoregressive Integrated Moving Average (ARIMA) model to predict a count of future university professor citations_
+
 
 <img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG" width="500" height="350">
 
