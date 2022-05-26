@@ -28,33 +28,41 @@ The purpose of this repository is to keep versions of code for future developmen
 - [x] _Train supervised and unsupervised models._
 
 ### GUID performance by data type (Power BI)
-_A [public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
+- [x] _A [public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
  which investigates the difference in processing performance between data types_
+ 
+ - [x] _Interactive visualisation and brief insights_
 
 ### GUID_performance_script (R)
-_The script behind the GUID perfomance Power BI report which is used to run the performance test_
+ - [x] _The script behind the GUID perfomance Power BI report which is used to run the performance test_
 
 ### TaxonomyPerformanceTest.csv
 
-_Output of 'GUID_performance_script.R', and used as an input to the Power BI report._
+ - [x] _Output of 'GUID_performance_script.R', and used as an input to the Power BI report._
 
 ### Linear_Regression_sample.ipynb (Python)
 
-_Train a linear model for predicting temperature by reading a weather patterns dataset and identifying significant features which correlate with temperature_
+ - [x] _Train a linear model for predicting temperature._
+ - [x] _Reading weather patterns data._
+ - [x] _Identifying significant features which correlate with temperature._
 
 ### Data_Analysis_in_R (R, .Rmd)
-_Extract, transform, and analyse healthcare facilities data._
+ - [x] _Extract, transform, and analyse healthcare facilities data._
 
 ### Data_Analysis_in_R_2 (R, .Rmd)
 
-_Extract, transform, visualise, and analyse emergency department data._
+ - [x] _Extract, transform, and analyse emergency department data._
+ - [x] _Plot distribution / visualise data and draw conclusions from analysis._
 
 ### Machine_Learning_sample.ipynb (Python)
 
-_Train a model to predict a class/category using machine learning techniques such as Clustering, ANOVA & Chi-Squared feature selection, dimensionality reduction_
+ - [x] _Train a model to predict a class/category using machine learning techniques._
+ - [x]  _Clustering, ANOVA & Chi-Squared feature selection._
+ - [x]  _Dimensionality reduction_
 
 ### EDR_Senior_Analyst (Rmd)
-_A markdown file used to assess the technical competency of potential developers, using a version of the iris flower dataset with bugs deliberately introduced_
+ - [x] _A markdown file used to assess the technical competency of developers during interviews._ 
+ - [x] A modified version of the iris flower dataset with bugs deliberately introduced_
 
 ### SampleDataset.csv
 _Used as an input for 'EDR_Senior_Analyst.Rmd'_
