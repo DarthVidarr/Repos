@@ -16,8 +16,9 @@ The purpose of this repository is to keep versions of code for future developmen
 
 <img src="https://github.com/DarthVidarr/Repos/blob/main/Confusion_Matrix_image.JPG" width="500" height="350"> <img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG" width="500" height="350">
 
-
+<p align='center'>
 <img src="https://github.com/DarthVidarr/Repos/blob/main/linear_regression.JPG"> 
+</p>
 
 # Contents
 
