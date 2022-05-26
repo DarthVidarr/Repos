@@ -14,7 +14,7 @@ _Power BI visualisations_
 
 _Python analysis and visualisation_
 
-<img src="https://github.com/DarthVidarr/Repos/blob/main/Confusion_Matrix_image.JPG"> <img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG" width="500" height="350">
+<img src="https://github.com/DarthVidarr/Repos/blob/main/Confusion_Matrix_image.JPG"width="450" height="350"> <img src="https://github.com/DarthVidarr/Repos/blob/main/ARIMA_model.JPG" width="500" height="350">
 
 <img src="https://github.com/DarthVidarr/Repos/blob/main/linear_regression.JPG"> 
 
