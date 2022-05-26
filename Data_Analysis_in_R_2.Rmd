@@ -1,0 +1,217 @@
+```{r}
+options(noaakey = "CMXXohjsXuESGGHyyitulqvruDlotFJk")
+
+library(rnoaa)
+library(tidyverse)
+library(fitdistrplus)
+library(mgcv)
+library(broom)
+library(zoo)
+
+perth_TMIN <- ncdc(
+  datasetid = 'GHCND',
+  stationid = 'GHCND:ASN00009021',
+  datatypeid = 'TMIN',
+  startdate = '2013-07-01',
+  enddate = '2014-06-30',
+  limit = 1000
+)$data
+
+perth_TMAX <- ncdc(
+  datasetid = 'GHCND',
+  stationid = 'GHCND:ASN00009021',
+  datatypeid = 'TMAX',
+  startdate = '2013-07-01',
+  enddate = '2014-06-30',
+  limit = 1000
+)$data
+
+perth_PRCP <- ncdc(
+  datasetid = 'GHCND',
+  stationid = 'GHCND:ASN00009021',
+  datatypeid = 'PRCP',
+  startdate = '2013-07-01',
+  enddate = '2014-06-30',
+  limit = 1000
+)$data
+
+perth_TAVG <- ncdc(
+  datasetid = 'GHCND',
+  stationid = 'GHCND:ASN00009021',
+  datatypeid = 'TAVG',
+  startdate = '2013-07-01',
+  enddate = '2014-06-30',
+  limit = 1000
+)$data
+
+perth_temperature <- rbind(perth_TAVG, perth_PRCP, perth_TMAX, perth_TMIN)
+perth_temperature = subset(perth_temperature, select = -c(fl_m, fl_q, fl_so, fl_t, station))
+perth_temperature <- perth_temperature %>%
+  spread(datatype, value)
+perth_temperature$date <- as.Date(perth_temperature$date)
+head(perth_temperature)
+```
+```{r}
+print("The number of rows is:")
+print(nrow(perth_temperature))
+print("The time period covered is:")
+print("FROM:")
+print(min(perth_temperature$date))
+print("TO:")
+print(max(perth_temperature$date))
+```
+```{r}
+#Load ED data from Assignment1
+
+ed_data_link <- 'govhack3.csv'
+top_row <- read_csv(ed_data_link, col_names = FALSE, n_max = 1)
+second_row <- read_csv(ed_data_link, n_max = 1)
+
+column_names <- second_row %>% 
+  unlist(., use.names=FALSE) %>% 
+  make.unique(., sep = "__") # double underscore
+
+column_names[2:8] <- str_c(column_names[2:8], '0', sep='__')
+
+daily_attendance <- 
+  read_csv(ed_data_link, skip = 2, col_names = column_names)
+
+daily_attendance <- daily_attendance %>% mutate(Date = as.Date(daily_attendance$Date, format="%d-%B-%Y"))
+
+ListOfHospitals <- top_row[!is.na(top_row)]
+
+dataset <- 
+  daily_attendance %>%
+  gather(col,value, -Date) %>%
+  separate(col, into = c("Dimension", "Hospital_Integer"), sep = "__", convert = TRUE) %>%
+  mutate(Hospital = (ListOfHospitals[(Hospital_Integer)+1])) %>%
+  spread(Dimension, value)
+
+dataset <- dataset[,-2]
+
+dataset[,3:9] <- lapply(dataset[,3:9], as.numeric)
+str(dataset)
+
+dataset[is.na(dataset)] <- 0
+```
+
+```{r}
+#Task 3
+FremantleHospital <- subset(dataset, Hospital == "Fremantle Hospital")
+FremantleHospital <- tibble::rowid_to_column(FremantleHospital, "Day_of_Year")
+#2.	Fit a linear model for Y using date as the predictor variable. Plot the fitted values and the residuals. Assess the model fit. Is a linear function sufficient for modelling the trend of Y? Support your conclusion with plots.
+model_lm <- lm(Attendance ~ Day_of_Year,
+               data = FremantleHospital)
+
+#Plot linear model
+FremantleHospital %>% ggplot(mapping = aes(x = Date, 
+                           y = Attendance)) + ggtitle("Linear Model") + 
+  geom_point() +
+  geom_smooth(method = 'lm',
+              color = 'steelblue')
+summary(model_lm)
+
+plot(model_lm)
+```
+```{r}
+#3.	As we are not interested in the trend itself, relax the linearity assumption by fitting a generalised additive model (GAM). Assess the model fit. Do you see patterns in the residuals indicating insufficient model fit?
+
+model_gam <- gam(Attendance ~ s(Day_of_Year), method = "REML",
+               data = FremantleHospital)
+
+gam.check(model_gam, pch = 1, cex = 1)
+summary(model_gam)
+plot(model_gam, residuals = TRUE,
+     pch = 1, cex = 1)
+
+```
+```{r}
+#4.	Augment the model to incorporate the weekly seasonality. Compare the models using the Akaike information criterion (AIC). Report the best-fitted model through coefficient estimates and/or plots.
+
+FremantleHospital$day <- weekdays(as.Date(FremantleHospital$Date))
+FremantleHospital$daynum <- format(FremantleHospital$Date,"%u")  
+FremantleHospital$daynum <- as.numeric(FremantleHospital$daynum)
+FremantleHospital$daynum <- (FremantleHospital$daynum)/7
+
+FremantleHospital$weeknum <- as.numeric(strftime(FremantleHospital$Date, format = "%V"))
+
+model_gam1 <- gam(Attendance ~ s(daynum, k=7) + s(weeknum, k=52), data = FremantleHospital, method = "REML")
+
+gam.check(model_gam1, pch = 1, cex = 1)
+summary(model_gam1)
+print("model_gam, which uses only day as a predictor of ED demand has an AIC of:")
+AIC(model_gam)
+print("model_gam1, which uses both day & week as predictors of ED demand has an AIC of:")
+AIC(model_gam1)
+plot(model_gam1)
+```
+
+```{r}
+#6.	Is your day-of-the-week variable numeric, ordinal, or categorical? Does the decision affect the model fit?
+
+FremantleHospital$cat_check <- factor(FremantleHospital$day) ##Variable created to check gam where 'day' is a factor rather than numeric.
+
+
+model_cat <- gam(Attendance ~ cat_check + s(weeknum, k=52), data = FremantleHospital, method = "REML")
+
+
+gam.check(model_cat, pch = 1, cex = 1)
+summary(model_cat)
+AIC(model_cat)
+plot(model_cat)
+
+####################################
+```
+
+
+```{r}
+FremantleHospital$ordinal_check <- factor(FremantleHospital$day, order = TRUE, levels =c('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'))
+
+model_ordinal <- gam(Attendance ~ ordinal_check + s(weeknum, k=52), data = FremantleHospital, method = "REML")
+
+
+gam.check(model_ordinal, pch = 1, cex = 1)
+summary(model_ordinal)
+AIC(model_ordinal)
+plot(model_ordinal)
+```
+```{r}
+#Task 4.1: Measuring heatwave (6 points)
+#2.	Use the NOAA data to calculate the daily EHF values for the Perth area during the relevant time period. Plot the daily EHF values.
+
+
+perth_temperature$EHF <- rollmean(perth_temperature$TAVG, 3, fill = NA, align = c("right"))
+
+plot(perth_temperature$EHF)
+```
+```{r}
+#Task 4.2: Models with EHF (5 points)
+#Use the EHF as an additional predictor to augment the model(s) that you fitted before. Report the estimated effect of the EHF on the ED demand. Does the extra predictor improve the model fit? What conclusions can you draw?
+
+merged_dataset <- merge(FremantleHospital, perth_temperature[ , c("date", "EHF", "TMIN", "TMAX", "PRCP", "TAVG")], by.x="Date", by.y="date")
+
+model_gam3 <- gam(Attendance ~ s(daynum, k=7) + s(weeknum, k=52) + s(TAVG), data = merged_dataset, method = "REML")
+
+gam.check(model_gam3, pch = 1, cex = 1)
+summary(model_gam3)
+AIC(model_gam3)
+plot(model_gam3)
+```
+```{r}
+summary(model_gam3)
+plot(model_gam3)
+```
+
+```{r}
+#Task 4.3: Extra weather features (4 points)
+#Can you think of extra weather features that may be more predictive of ED demands? Try incorporating your feature into the model and see if it improves the model fit.
+
+model_gam4 <- gam(Attendance ~ s(daynum, k=7) + s(weeknum, k=52) + s(EHF) + s(TMAX), data = merged_dataset, method = "REML")
+
+gam.check(model_gam4, pch = 1, cex = 1)
+summary(model_gam4)
+AIC(model_gam4)
+plot(model_gam4)
+
+```
+

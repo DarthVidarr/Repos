@@ -1,0 +1,128 @@
+```{r}
+
+### Task 1 ###
+
+# Task 1.1 Download the data set using the link below.
+library(tidyverse)
+library(fitdistrplus)
+library(magrittr)
+
+ed_data_link <- 'govhack3.csv'
+top_row <- read_csv(ed_data_link, col_names = FALSE, n_max = 1)
+second_row <- read_csv(ed_data_link, n_max = 1)
+
+column_names <- second_row %>% 
+  unlist(., use.names=FALSE) %>% 
+  make.unique(., sep = "__") # double underscore
+
+column_names[2:8] <- str_c(column_names[2:8], '0', sep='__')
+
+daily_attendance <- 
+  read_csv(ed_data_link, skip = 2, col_names = column_names)
+  
+# Task 1.2 Answer the following questions:
+
+#How many rows and columns are in the data?
+print(ncol(daily_attendance))
+print(nrow(daily_attendance))
+#How many hospitals are in the data?
+rowSums(!is.na(top_row))
+#What data types are in the data?
+str(daily_attendance)
+#What time period does the data cover?
+#Note: First convert 'Data' column to date to derive values
+daily_attendance <- daily_attendance %>% mutate(Date = as.Date(daily_attendance$Date, format="%d-%B-%Y"))
+print(min(daily_attendance$Date))
+print(max(daily_attendance$Date))
+```
+```{r}
+### Task 2 ###
+
+# Task 2.1 Cleaning up columns
+
+#Now print out a list of healthcare facilities (hospitals) in the data set.
+ListOfHospitals <- top_row[!is.na(top_row)]
+print(ListOfHospitals)
+
+# Task 2.2 Tidying data
+
+#Now we have a data frame. Answer the following questions for this data frame.
+dataset <- 
+  daily_attendance %>%
+  gather(col,value, -Date) %>%
+  separate(col, into = c("Dimension", "Hospital_Integer"), sep = "__", convert = TRUE) %>%
+  mutate(Hospital = (ListOfHospitals[(Hospital_Integer)+1])) %>%
+  spread(Dimension, value)
+
+dataset <- dataset[,-2]
+
+#Are the variables having the expected variable types in R? Clean up the data types.
+dataset[,3:9] <- lapply(dataset[,3:9], as.numeric)
+str(dataset)
+
+#Are there any missing values? Fix the  missing data. Justify your actions.
+dataset[is.na(dataset)] <- 0
+SelectHospital <- dataset %>% subset()
+```
+
+```{r}
+### Task 3 ###
+
+# Task 3.1 Select a hospital
+
+# Select a hospital and create a data set for only that hospital. Print out the hospital's name, the total number of ED attendances and the total number of admissions.
+FremantleHospital <- subset(dataset, Hospital == "Fremantle Hospital")
+
+print(FremantleHospital$Hospital[1])
+print(sum(FremantleHospital$Admissions))
+print(sum(FremantleHospital$Attendance))
+
+# Task 3.2 For the hospital selected, if we want to compare the volume of ED demands across the year, which plot can we use? Show your plot and explain what the plot shows. (Hint: Which variables measure the ED demands?)
+FremantleHospital %>% ggplot() + geom_line(aes(x = Date,y = Attendance))
+
+# Task 3.3 How do the ED demands change during a week? Show it visually.
+FremantleHospital$day <- weekdays(as.Date(FremantleHospital$Date))
+FremantleHospital %>% 
+  ggplot(aes(x = Attendance ,y = day)) + geom_boxplot(width=.5)
+
+# Task 3.4 Which distributions are appropriate for modelling the ED demand? Which variables meet the assumptions for the Poisson distribution? To reduce the dependence between consecutive days, we randomly sample 200 records out of the whole dataset (all records for the selected hospital) for modelling.
+
+FremantleHospital %$%
+  descdist(Attendance, boot = 200)
+
+sapply(FremantleHospital[3:9], function(x) c(sum=sum(x), var=var(x), mean=mean(x)))
+```
+
+```{r}
+### Task 4 ###
+
+# Task 4.1: Fitting distributions (Fit a Poisson distribution and a negative binomial distribution on Tri_2. You may use functions provided by the package fitdistrplus)
+nBinomDist <- FremantleHospital %$%
+  fitdist(data = Tri_2, distr = "nbinom")
+nBinomDist %>% plot
+PoisDist <- FremantleHospital %$%
+  fitdist(data = Tri_2, distr = "pois")
+PoisDist %>% plot
+# Task 4.2: Compare distributions
+nBinomDist$loglik
+PoisDist$loglik
+```
+```{r}
+### Task 7 ###
+
+# Task 7.2
+#Please estimate the mark that you will receive for assignment 1. Please provide both a point estimate and an interval estimate (a confidence interval). You don’t need to provide a mathematical model, but please explain how do you use conditional information to reach the estimates. Based on the conditional information, explain what you would have done differently to improve that mark?
+marks <- c(4, 5, 5, 5, 3, 2, 1)
+confidence <- c(100, 95, 90, 90, 100, 100, 90)
+estimates <- data.frame(marks, confidence)
+point_estimate <- mean(estimates$confidence)
+variance <- sd(estimates$confidence)
+n = length(estimates$confidence)
+mean_error <- variance/sqrt(n)
+margin_error <- qnorm(.975)*mean_error
+confidence_interval <- point_estimate + c(-margin_error, margin_error)
+
+cat("Given a standard deviation of", variance, "the margin of error at 95% confidence for how well I believe I've answered each given task for the assessment (from 0-100) is,", margin_error, ". Therefore, the confidence interval is between", confidence_interval, "with a point estimate of", point_estimate,".")
+
+```
+
