@@ -62,20 +62,26 @@ The purpose of this repository is to keep versions of code for future developmen
 
 ### EDR_Senior_Analyst (Rmd)
  - [x] _A markdown file used to assess the technical competency of developers during interviews._ 
- - [x] A modified version of the iris flower dataset with bugs deliberately introduced_
+ - [x] _A modified version of the iris flower dataset with bugs deliberately introduced_
 
 ### SampleDataset.csv
-_Used as an input for 'EDR_Senior_Analyst.Rmd'_
+ - [x] _Used as an input for 'EDR_Senior_Analyst.Rmd'_
 
 ### working_location_script
 
-_A script which reconciles latitude / longitude coordinates to locations which are entered as free-text. For example: "Melbourne", "Melbourne 3212", Melbourne VIC" should all result in the same latitude / longitude coordinates. This is useful for plotting free-text geographic information on a map visual._
+ - [x] _A Python script which finds latitude / longitude coordinates for locations which are entered as free-text._
+ - [x] _For example: "Melbourne", "Melbourne 3212", Melbourne VIC" should all result in the same latitude / longitude coordinates._
+ - [x] _Useful for plotting free-text geographic information on a map visual._
 
 ### Documentation > Documentation sample
 
-_An example of documentation including data transformations, modelling, lineage and brief wireframe._
+ - [ ] _An example of documentation including:_
+ - [x] _Data transformations,_ 
+ - [x] _Modelling,_
+ - [x] _Lineage_
+ - [x] _A conceptual wireframe._
 
 ### Documentation > Wireframe sample
 
-_A wireframe for a proof-of-concept Power BI report_
+ - [x] _A wireframe for a proof-of-concept Power BI report_
 
