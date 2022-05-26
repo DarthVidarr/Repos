@@ -2,9 +2,9 @@
 
 This repository contains collection of code, documentation, and sample outputs which have been produced for various 
 
-### **data science**, 
-### **wrangling**, and 
-### **analysis** projects. 
+ - [x]  **data science**, 
+ - [x]  **wrangling**, and 
+ - [x]  **analysis** projects. 
 
 Relevant tools used in this repository include:
 
