@@ -9,7 +9,9 @@ The purpose of this repository is to keep versions of code for future developmen
 # Example of contents
 
 _Power BI heatmap to track clients user data_
-
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+!<img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">  |  !<img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">
 
 _Visualising the linear regression of significant features used to predict temperature_
