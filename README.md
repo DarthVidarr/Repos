@@ -6,9 +6,7 @@ This repository contains collection of code, documentation, and sample outputs w
 
 The purpose of this repository is to keep versions of code for future development use and to continue contributing to when new or improvements to existing code is produced 
 
-<p align='center'>
 # Example of contents
-</p>
 
 ## _Power BI visualisations_
 
