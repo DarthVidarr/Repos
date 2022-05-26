@@ -40,6 +40,13 @@ Output of 'GUID_performance_script.R', and used as an input to the Power BI repo
 
 Train a linear model for predicting temperature by reading a weather patterns dataset and identifying significant features which correlate with temperature
 
+### Data_Analysis_in_R (R, .Rmd)
+Extract, transform, and analyse healthcare facilities data. 
+
+### Data_Analysis_in_R_2 (R, .Rmd)
+
+Extract, transform, visualise, and analyse emergency department data. 
+
 ### Machine_Learning_sample.ipynb (Python)
 
 Train a model to predict a class/category using machine learning techniques such as Clustering, ANOVA & Chi-Squared feature selection, dimensionality reduction
