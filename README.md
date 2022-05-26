@@ -9,7 +9,7 @@ The purpose of this repository is to keep versions of code for future developmen
 # Example of contents
 
 _Power BI heatmap to track clients user data_
-Power BI visualisations             | . 
+Power BI visualisations              
 :-------------------------:|:-------------------------:
 <img src="https://github.com/DarthVidarr/Repos/blob/main/heatmap.JPG" width="450" height="350">  |  <img src="https://github.com/DarthVidarr/Repos/blob/main/Performance_Test_image.JPG" width="450" height="350">
 
