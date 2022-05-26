@@ -23,7 +23,7 @@ _Output of Autoregressive Integrated Moving Average (ARIMA) model to predict a c
 # Contents
 
 ### GUID performance by data type (Power BI)
-A [publicly available Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
+A [public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
  which investigates the difference in processing performance between data types 
 
 ### GUID_performance_script (R)
@@ -41,11 +41,8 @@ Train a linear model for predicting temperature by reading a weather patterns da
 
 Train a model to predict a class/category using machine learning techniques such as Clustering, ANOVA & Chi-Squared feature selection, dimensionality reduction
 
-### Data_Analysis_sample.ipynb (Python)
-Read, clean, analyse and visualise dataset 
-
-### Data_Manipulation_sample.ipynb (Python)
-Read, clean, transform, analyse, and visualise data 
+### Data_Analysis_sample.ipynb (Python, PySpark)
+Extract, transform, analyse and visualise web log data. Train supervised and unsupervised models.
 
 ### EDR_Senior_Analyst (Rmd)
 A markdown file used to assess the technical competency of potential developers, using a version of the iris flower dataset with bugs deliberately introduced
