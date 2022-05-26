@@ -27,7 +27,7 @@ _Extract, transform, analyse and visualise web log data. Train supervised and un
 
 ### GUID performance by data type (Power BI)
 _A [public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
- which investigates the difference in processing performance between data types 
+ which investigates the difference in processing performance between data types_
 
 ### GUID_performance_script (R)
 _The script behind the GUID perfomance Power BI report which is used to run the performance test_
