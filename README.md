@@ -22,8 +22,8 @@ The purpose of this repository is to keep versions of code for future developmen
 
 # Contents
 
-- [x] ### Data_Science_sample.ipynb (Python, PySpark)
-_Extract, transform, analyse and visualise web log data. Train supervised and unsupervised models._
+## Data_Science_sample.ipynb (Python, PySpark)
+- [x] _Extract, transform, analyse and visualise web log data. Train supervised and unsupervised models._
 
 ### GUID performance by data type (Power BI)
 _A [public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjQ2MWM5ZTUtMDJlYi00YThlLWE5MGUtMGIwNzQ5Y2E0N2RjIiwidCI6ImU3ZTAzMWZjLWY1MGEtNDA2OS05NWE5LTZmNGQ4OTgxYzdmMiJ9)
