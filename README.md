@@ -20,7 +20,7 @@ The purpose of this repository is to keep versions of code for future developmen
 <img src="https://github.com/DarthVidarr/Repos/blob/main/linear_regression.JPG"> 
 </p>
 
-# Contents
+#                                      Contents
 
 ### Data_Science_sample.ipynb (Python, PySpark)
 Extract, transform, analyse and visualise web log data. Train supervised and unsupervised models.
