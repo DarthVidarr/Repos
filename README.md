@@ -22,7 +22,7 @@ _Output of Autoregressive Integrated Moving Average (ARIMA) model to predict a c
 
 # Contents
 
-### Data_Analysis_sample.ipynb (Python, PySpark)
+### Data_Science_sample.ipynb (Python, PySpark)
 Extract, transform, analyse and visualise web log data. Train supervised and unsupervised models.
 
 ### GUID performance by data type (Power BI)
