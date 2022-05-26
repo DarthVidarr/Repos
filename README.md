@@ -1,6 +1,14 @@
 # Introduction
 
-This repository contains collection of code, documentation, and sample outputs which have been produced for various data science, wrangling, and analysis projects. 
+This repository contains collection of code, documentation, and sample outputs which have been produced for various **data science**, **wrangling**, and **analysis** projects. 
+
+The tools used in this repository include:
+
+ - [x] Python
+ - [x] Power BI
+ - [x] R / .Rmd
+ - [x] PySpark
+ - [x] SQL 
 
 # Purpose
 
